@@ -5,7 +5,7 @@ const fs = require('fs');
 const keyFile  = fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/key.pem');
 const certFile = fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/csr.pem');
 
-console.log(certFile)
+//console.log(certFile)
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule,{ 
