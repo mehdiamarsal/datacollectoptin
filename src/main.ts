@@ -1,20 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-const fs = require('fs');
-//const keyFile = fs.readFileSync('/home/datacollectoptin/ssl/keys/8e811_66a9b_3875f1901f83f16654a169248b1b83e2.key');
-//const certFile = fs.readFileSync('/home/datacollectoptin/ssl/certs/api_datacollectoptin_com_8e811_66a9b_1760608687_a8dffefe6921360bcb3fb33ae21ad8d6.crt');
-
-
+import * as fs from 'fs';
 //console.log(certFile)
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { 
-  /*   httpsOptions: {
-      key: keyFile,
-      cert: certFile,
-    } */
+  const httpsOptions = {
+    key: fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/server.key'),
+    cert: fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/server.crt'),
+  };
+
+  const app = await NestFactory.create(AppModule, {
+    httpsOptions,
   });
+
 
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,  // Supprime les propriétés non spécifiées dans le DTO
