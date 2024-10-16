@@ -13,8 +13,10 @@ export class Campaign {
   @Column({ type: 'int', default: 0 })
   capping: number;
 
-  
 
+  @Column({ type: 'varchar', length: 10, nullable: true })
+  etat: string;
+  
   @OneToMany(() => Lead, (lead) => lead.campaign)
   leads: Lead[];
 }

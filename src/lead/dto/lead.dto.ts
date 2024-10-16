@@ -72,7 +72,7 @@ export class LeadDto {
   @IsEnum(Profession, { message: 'Profession doit être une valeur valide entre 1 et 16' })
   profession: Profession;
 
-
+ 
 
     @IsNotEmpty()
   campaignId: number;
