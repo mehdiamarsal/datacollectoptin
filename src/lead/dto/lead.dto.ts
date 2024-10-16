@@ -67,11 +67,7 @@ export class LeadDto {
   @IsNotEmpty()
   cp: string;
 
-  // Validation du régime
-  @IsNotEmpty()
-  @IsNumber({}, { message: 'Régime doit être un nombre' })
-  @IsIn([1, 2, 4], { message: 'Régime doit être 1 (Général), 2 (Senior), ou 4 (TNS)' })
-  regime: number;
+
 
   @IsEnum(Profession, { message: 'Profession doit être une valeur valide entre 1 et 16' })
   profession: Profession;

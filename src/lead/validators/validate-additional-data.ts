@@ -2,6 +2,7 @@ import { registerDecorator, ValidationArguments, ValidationOptions, ValidatorCon
 import { validateSync } from 'class-validator';
 import { AdditionalDataCampaignDto1 } from '../dto/additional-data-campaign-1.dto';
 import { AdditionalDataCampaignDto2 } from '../dto/additional-data-campaign-2.dto';
+import { AdditionalDataCampaignDto3 } from '../dto/additional-data-campaign-3.dto';
 
 @ValidatorConstraint({ async: false })
 export class ValidateAdditionalDataConstraint implements ValidatorConstraintInterface {
@@ -25,7 +26,14 @@ export class ValidateAdditionalDataConstraint implements ValidatorConstraintInte
       }
       return validationErrors.length === 0;  // Renvoie false si des erreurs sont présentes
     }
-    
+    else if (campaignId === 3) {
+      // Valider contre AdditionalDataCampaignBDto
+      const validationErrors = validateSync(Object.assign(new AdditionalDataCampaignDto3(), value));
+      if (validationErrors.length > 0) {
+        console.log('Validation errors for Campaign B:', validationErrors);
+      }
+      return validationErrors.length === 0;  // Renvoie false si des erreurs sont présentes
+    }
     return false;
   }
 
