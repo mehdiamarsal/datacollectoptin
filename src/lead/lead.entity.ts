@@ -7,10 +7,10 @@ export class Lead {
   id: number;
 
   @Column()
-  firstName: string;
+  prenom: string;
 
   @Column()
-  lastName: string;
+  nom: string;
 
   @Column()
   email: string;
