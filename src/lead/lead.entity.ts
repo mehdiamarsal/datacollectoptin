@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { Campaign } from '../campaign/campaign.entity';
 import { Civilite } from './dto/lead.dto'; 
 @Entity()
@@ -53,8 +53,18 @@ export class Lead {
   })
   profession: number;
 
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date;
 
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date;
   
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  etatEnvoi: string;
+
+  @Column({ type: 'timestamp', nullable: true })
+  dateHeureEnvoi: Date;
+
   @Column('json', { nullable: true })
   additionalData: Record<string, any>;
 

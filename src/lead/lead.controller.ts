@@ -12,10 +12,15 @@ export class LeadController {
 
   @Post()
  // @Roles(UserRole.ASSISTANT, UserRole.ADMIN, UserRole.SUPERADMIN)  // Accessible à tous les rôles
-  async createLead(@Body() leadDto: LeadDto) {
-    return this.leadService.createLead(leadDto);
+ async createLead(@Body() leadDto: LeadDto): Promise<string> {
+  try {
+    const result = await this.leadService.createLead(leadDto);
+    return result; // Retourne "OK" ou "KO" en fonction du résultat
+  } catch (error) {
+    console.error(error);
+    return 'KO'; // En cas d'exception, retourner "KO"
   }
-
+}
   @Get()
   @Roles(UserRole.ADMIN, UserRole.SUPERADMIN)  // Accessible uniquement aux admins
   async getAllLeads() {

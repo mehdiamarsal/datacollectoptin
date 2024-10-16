@@ -2,8 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 const fs = require('fs');
-const keyFile = fs.readFileSync('/home/datacollectoptin/ssl/keys/8e811_66a9b_3875f1901f83f16654a169248b1b83e2.key');
-const certFile = fs.readFileSync('/home/datacollectoptin/ssl/certs/api_datacollectoptin_com_8e811_66a9b_1760608687_a8dffefe6921360bcb3fb33ae21ad8d6.crt');
+//const keyFile = fs.readFileSync('/home/datacollectoptin/ssl/keys/8e811_66a9b_3875f1901f83f16654a169248b1b83e2.key');
+//const certFile = fs.readFileSync('/home/datacollectoptin/ssl/certs/api_datacollectoptin_com_8e811_66a9b_1760608687_a8dffefe6921360bcb3fb33ae21ad8d6.crt');
 
 
 //console.log(certFile)

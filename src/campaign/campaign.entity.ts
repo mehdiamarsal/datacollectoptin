@@ -9,6 +9,12 @@ export class Campaign {
   @Column()
   name: string;
 
+
+  @Column({ type: 'int', default: 0 })
+  capping: number;
+
+  
+
   @OneToMany(() => Lead, (lead) => lead.campaign)
   leads: Lead[];
 }
