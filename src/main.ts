@@ -10,10 +10,10 @@ const certFile = fs.readFileSync('/home/datacollectoptin/ssl/certs/api_datacolle
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { 
-    httpsOptions: {
+  /*   httpsOptions: {
       key: keyFile,
       cert: certFile,
-    }
+    } */
   });
 
   app.useGlobalPipes(new ValidationPipe({
