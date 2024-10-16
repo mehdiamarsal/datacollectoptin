@@ -1,14 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Campaign } from './campaign.entity';
 import { CreateCampaignDto } from './dto/create-campaign.dto';
-
+import { LeadService } from '../lead/lead.service';
 @Injectable()
 export class CampaignService {
   constructor(
     @InjectRepository(Campaign)
-    private campaignRepository: Repository<Campaign>,
+    private readonly campaignRepository: Repository<Campaign>,
+
+    @Inject(forwardRef(() => LeadService)) // Utiliser forwardRef ici
+    private readonly leadService: LeadService,
   ) {}
 
   async createCampaign(createCampaignDto: CreateCampaignDto): Promise<Campaign> {

@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, BadRequestException, HttpException, HttpStatus, forwardRef, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Lead } from "./lead.entity";
@@ -9,9 +9,12 @@ import { LeadDto } from './dto/lead.dto';
 export class LeadService {
   constructor(
     @InjectRepository(Lead)
-    private leadRepository: Repository<Lead>,
-    private campaignService: CampaignService,
+    private readonly leadRepository: Repository<Lead>,
+
+    @Inject(forwardRef(() => CampaignService)) // Utiliser forwardRef ici si nécessaire
+    private readonly campaignService: CampaignService,
   ) {}
+
 
 
   
