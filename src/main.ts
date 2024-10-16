@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 const fs = require('fs');
 const keyFile  = fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/key.pem');
-const certFile = fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/crt.pem');
+const certFile = fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/csr.pem');
 
 console.log(certFile)
 
