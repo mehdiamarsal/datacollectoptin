@@ -3,7 +3,7 @@ import { AdditionalDataCampaignDto1 } from './additional-data-campaign-1.dto';
 import { AdditionalDataCampaignDto2 } from './additional-data-campaign-2.dto';
 import { AdditionalDataCampaignDto3} from './additional-data-campaign-3.dto';
 import { ValidateAdditionalData } from '../validators/validate-additional-data';
-import { IsUniqueEmail, IsUniquePhone } from '../validators/unique-validator';
+//import { IsUniqueEmail, IsUniquePhone } from '../validators/unique-validator';
 export enum Civilite {
   MR = 'Mr',
   MME = 'Mme',
@@ -46,7 +46,7 @@ export class LeadDto {
   @IsEmail()
   @IsString()
   @IsNotEmpty()
-  @IsUniqueEmail({ message: 'Email already exists' })
+  //@IsUniqueEmail({ message: 'Email already exists' })
   email: string;
 
  
@@ -54,7 +54,7 @@ export class LeadDto {
   @Matches(/^0[0-9]{9}$/, { message: 'Le numéro de téléphone doit commencer par 0 et contenir 10 chiffres' })
   @IsString()
   @IsNotEmpty()
-  @IsUniquePhone({ message: 'Phone number already exists' })
+  //@IsUniquePhone({ message: 'Phone number already exists' })
   phone: string;
 
 
