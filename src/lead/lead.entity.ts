@@ -1,7 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn, Unique } from 'typeorm';
 import { Campaign } from '../campaign/campaign.entity';
 import { Civilite } from './dto/lead.dto'; 
 @Entity()
+
+@Unique(['email']) // Ajout d'une contrainte unique sur l'email
+@Unique(['phone']) // Ajout d'une contrainte unique sur le téléphone
 export class Lead {
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,10 +15,12 @@ export class Lead {
   @Column()
   nom: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
-  @Column()
+
+  @Column({ unique: true }) 
+
   phone: string;
 
 

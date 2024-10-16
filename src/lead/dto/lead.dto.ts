@@ -1,7 +1,9 @@
 import { IsString, IsNotEmpty, IsObject, Validate, IsEnum, IsEmail, Length, Matches, IsNumber, IsIn } from 'class-validator';
 import { AdditionalDataCampaignDto1 } from './additional-data-campaign-1.dto';
 import { AdditionalDataCampaignDto2 } from './additional-data-campaign-2.dto';
+import { AdditionalDataCampaignDto3} from './additional-data-campaign-3.dto';
 import { ValidateAdditionalData } from '../validators/validate-additional-data';
+import { IsUniqueEmail, IsUniquePhone } from '../validators/unique-validator';
 export enum Civilite {
   MR = 'Mr',
   MME = 'Mme',
@@ -44,15 +46,40 @@ export class LeadDto {
   @IsEmail()
   @IsString()
   @IsNotEmpty()
+  @IsUniqueEmail({ message: 'Email already exists' })
   email: string;
 
-  @IsString()
+ 
   @Length(10, 10, { message: 'Le numéro de téléphone doit contenir exactement 10 caractères' })
   @Matches(/^0[0-9]{9}$/, { message: 'Le numéro de téléphone doit commencer par 0 et contenir 10 chiffres' })
-
+  @IsString()
+  @IsNotEmpty()
+  @IsUniquePhone({ message: 'Phone number already exists' })
   phone: string;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   @IsString()
   @IsNotEmpty()
   adresse: string;
@@ -91,5 +118,5 @@ export class LeadDto {
     message: 'Invalid additional data for the given campaign',
   })
   @IsObject()
-  additionalData: AdditionalDataCampaignDto1 | AdditionalDataCampaignDto2;
+  additionalData: AdditionalDataCampaignDto1 | AdditionalDataCampaignDto2| AdditionalDataCampaignDto3;
 }

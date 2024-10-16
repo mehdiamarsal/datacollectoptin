@@ -18,6 +18,13 @@ export class LeadService {
 
 
 
+  async findOneByEmail(email: string): Promise<Lead | null> {
+    return this.leadRepository.findOne({ where: { email } });
+  }
+
+  async findOneByPhone(phone: string): Promise<Lead | null> {
+    return this.leadRepository.findOne({ where: { phone } });
+  }
 
 
 
