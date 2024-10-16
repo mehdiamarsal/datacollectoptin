@@ -36,10 +36,7 @@ export class Lead {
   })
   civilite: Civilite;
 
-  @Column({
-    type: 'int',  // On enregistre comme un entier
-  })
-  regime: number;
+
 
 
   @Column({
