@@ -1,9 +1,18 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+const fs = require('fs');
+const keyFile  = fs.readFileSync(__dirname + '/../key.pem');
+const certFile = fs.readFileSync(__dirname + '/../crt.pem');
+
+console.log(certFile)
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule,{ 
+    httpsOptions: {
+    key: keyFile,
+    cert: certFile,
+  }});
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,  // Supprime les propriétés non spécifiées dans le DTO
     forbidNonWhitelisted: true,  // Renvoie une erreur si des propriétés non spécifiées sont présentes
