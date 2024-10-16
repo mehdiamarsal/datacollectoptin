@@ -9,9 +9,9 @@ async function bootstrap() {
     key: fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/server.key'),
     cert: fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/server.crt'),
   };
-
+//  httpsOptions,
   const app = await NestFactory.create(AppModule, {
-  //  httpsOptions,
+  
   });
 
 
