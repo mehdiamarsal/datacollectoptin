@@ -2,8 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 const fs = require('fs');
-const keyFile  = fs.readFileSync(__dirname + '/../key.pem');
-const certFile = fs.readFileSync(__dirname + '/../crt.pem');
+const keyFile  = fs.readFileSync('../key.pem');
+const certFile = fs.readFileSync('../crt.pem');
 
 console.log(certFile)
 
