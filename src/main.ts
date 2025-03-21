@@ -5,10 +5,10 @@ import * as fs from 'fs';
 //console.log(certFile)
 
 async function bootstrap() {
-  const httpsOptions = {
+/*   const httpsOptions = {
     key: fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/server.key'),
     cert: fs.readFileSync('/home/datacollectoptin/www/api.datacollectoptin.com/server.crt'),
-  };
+  }; */
 //  httpsOptions,
   const app = await NestFactory.create(AppModule, {
   
